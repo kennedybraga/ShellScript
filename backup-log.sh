@@ -4,7 +4,7 @@
 #
 ### Leia o script antes de executa-lo
 #
-# Criar arquivo de log: touch /var/log/.log
+# Criar arquivo de log: touch /var/log/registro_backup.log
 # Permissao : chmod 755 /var/log/registro_backup.log
 #
 # Para descompactar gzip -d arquivo.gz
@@ -23,12 +23,13 @@ LOG_FILE="/var/log/registro_backup.log"
 
 BKPLog="/var/log/arquivo/olddir/registro.txt-$DATE.txt.gz"
 #Sugestao: E interessante que seu backup apos criado, seja enviado para um bucket, com permissao somente de envio.
+#Desta forma, é necessário ajustar o script
 
 SizeFile=(du -b /var/log/arquivo/registro.txt | head -n 1 | awk {'print $1'})
 
 function IniciarBackup(){
 
-    echo "Iniciando backup Script backup-log " >> $LOG_FILE
+    echo "Iniciando backup Script backup-log.sh " >> $LOG_FILE
     
     gzip -c $FILE > $BKPLog
 
