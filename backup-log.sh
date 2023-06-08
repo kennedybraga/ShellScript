@@ -13,19 +13,19 @@
 #
 
 #SIZE refere-se a 729M
-SIZE="764411904"
+readonly SIZE="764411904"
 
 DATE=$(date +%m%d%Y-%H%M)
 
-FILE="/var/log/arquivo/log_aplicacao.txt"
+readonly FILE="/var/log/arquivo/log_aplicacao.txt"
 
-LOG_FILE="/var/log/registro_backup.log"
+readonly LOG_FILE="/var/log/registro_backup.log"
 
-BKPLog="/var/log/arquivo/olddir/registro.txt-$DATE.txt.gz"
+readonly KPLog="/var/log/arquivo/olddir/registro.txt-$DATE.txt.gz"
 #Sugestao: E interessante que seu backup apos criado, seja enviado para um bucket, com permissao somente de envio.
 #Desta forma, é necessário ajustar o script
 
-SizeFile=(du -b /var/log/arquivo/registro.txt | head -n 1 | awk {'print $1'})
+readonly SizeFile=(du -b /var/log/arquivo/registro.txt | head -n 1 | awk {'print $1'})
 
 function IniciarBackup(){
 
